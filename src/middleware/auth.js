@@ -4,10 +4,9 @@ require("dotenv").config();
 
 const auth = async (req, res, next) => {
   try {
-    const token = req.headers?.authorization?.startsWith("Bearer")
-      ? req.headers.authorization
+    const token = req.headers?.authorization?.startsWith("Bearer ")
+      ? req.headers.authorization.replace("Bearer ", "")
       : undefined;
-
     if (!token) {
       return res
         .status(401)
@@ -19,7 +18,7 @@ const auth = async (req, res, next) => {
     });
 
     if (!user) {
-      res
+      return res
         .status(404)
         .json({ error: "No user tied to this authentication token" });
     }
