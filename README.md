@@ -217,7 +217,8 @@ This project consists of three schemas: **User**, **Review**, and **Apartment**.
 
 - **Endpoint**: `/api/reviews/:id`
 - **Method**: `GET`
-- **Description**: Retrieves all the reviews for a specific apartment and sorts them by the highest "reviewHelpfulCount" value. Requires user authentication.
+- **Description**: Retrieves all the reviews for a specific apartment and sorts them by the recently created by default. Passing the qeury param below sorts by "reviewHelpfulCount" value in descending order. Requires user authentication.
+- **Query**: `sortBy = "mostHelpful"`
 - **Response**:
   ```json
   [
